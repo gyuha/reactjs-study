@@ -14,7 +14,6 @@
 * [TailWind](https://tailwindcss.com/) 
 * [Get started with Tailwind CSS](https://tailwindcss.com/docs/installation/play-cdn) : HTML에서 TailWind 사용하기
 * [https://tailblocks.cc/](https://tailblocks.cc/) : 짧은 예제용
-* []
 
 ### 그외
 * [{JSON} Placeholder](https://jsonplaceholder.typicode.com/) : JSON 샘플 데이터
