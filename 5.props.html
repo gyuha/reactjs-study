@@ -1,0 +1,47 @@
+<html>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/jsx">
+        function Header1({title}) {
+            return <h1>{title}</h1>;
+        }
+        function Header2(props) {
+            console.log(props);
+            return <h1>{props.title}</h1>;
+        }
+        function Header3(p) {
+            console.log(p);
+            return <h1>{p.title}</h1>;
+        }
+
+        function HomePage() {
+            const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+            return (
+              <div>
+                <Header1 title="!!! Header1" />
+                <Header2 title="!!! Header2" />
+                <Header3 title="!!! Header3" />
+                <ul>
+                  {names.map((name) => (
+                    <li key={name}>{name}</li>
+                  ))}
+                </ul>
+                  {names.map((name) => (
+                    <Header1 title={name} />
+                  ))}
+              </div>
+            );
+        }
+
+        ReactDOM.render(<HomePage />, app);
+    </script>
+</body>
+
+</html>

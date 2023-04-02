@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./components/header.js" type="text/jsx"></script>
+    <script src="./components/footer.js" type="text/jsx"></script>
+    <script src="./components/teams.js" type="text/jsx"></script>
+    <script type="text/jsx">
+
+        function HomePage() {
+            return (
+                <>
+                    <Header />
+                    <Teams />
+                    <Footer />
+                </>
+            );
+        }
+
+        ReactDOM.render(<HomePage />, app);
+    </script>
+</body>
+
+</html>
