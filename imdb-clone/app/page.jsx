@@ -15,7 +15,10 @@ const Home = ({ searchParams }) => {
       }?api_key=${API_KEY}&language=en-US&page=1`
     ).then((response) => response.json()
     ).then((data) => {
-      setResults(data.results)
+      console.log('📢[page.jsx:18]: data: ', data);
+      if (data.status_code !== 7) {
+        setResults(data.results)
+      }
     });
   }, []);
 
