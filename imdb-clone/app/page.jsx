@@ -1,28 +1,22 @@
 "use client";
-import { useEffect, useState } from "react";
 import Results from "@/components/results";
+import useSWR from 'swr';
+import { API_KEY } from "./config";
+import fetcher from "@/lib/fetcher";
+
 
 const Home = ({ searchParams }) => {
-  const API_KEY = "이건 키로 대체";
 
   const genre = searchParams.genre || "fetchTrending";
-  const [results, setResults] = useState([]);
+  const { data, error, isLoading } = useSWR(
+    `https://api.themoviedb.org/3/${genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"
+    }?api_key=${API_KEY}&language=en-US&page=1`
+    , fetcher)
 
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/${
-        genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"
-      }?api_key=${API_KEY}&language=en-US&page=1`
-    ).then((response) => response.json()
-    ).then((data) => {
-      console.log('📢[page.jsx:18]: data: ', data);
-      if (data.status_code !== 7) {
-        setResults(data.results)
-      }
-    });
-  }, []);
+  if (error) return <div>failed to load</div>
+  if (isLoading) return <div>loading...</div>
 
-  return <Results data={results}/>;
+  return <Results data={data.results} />;
 };
 
 export default Home;

@@ -1,25 +1,41 @@
 <!-- index.html -->
 <html>
-  <body>
-    <div id="app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
-      // Select the div element with 'app' id
-      const app = document.getElementById('app');
+<body>
+  <div id="app"></div>
+  <div id="app2"></div>
 
-      // Create a new H1 element
-      const header = document.createElement('h1');
+  <script type="text/javascript">
+    const tag = "div";
+    var tags =
+      _.template(`<span style="color: red">
+      <%=name%>
+      </span>`);
 
-      // Create a new text node for the H1 element
-      const headerContent = document.createTextNode(
-        'Develop. Preview. Ship. 🚀',
-      );
+    // Select the div element with 'app' id
+    const app = document.getElementById('app');
 
-      // Append the text to the H1 element
-      header.appendChild(headerContent);
+    // Create a new H1 element
+    const header = document.createElement('h1');
+    let result = tags({ 'name': 'Nidhi' });
+    // Create a new text node for the H1 element
+    const headerContent = document.createTextNode(
+      result
+    );
 
-      // Place the H1 element inside the div
-      app.appendChild(header);
-    </script>
-  </body>
+    // Append the text to the H1 element
+    header.appendChild(headerContent);
+
+    // Place the H1 element inside the div
+    app.appendChild(header);
+
+    $(function () {
+      $('#app2').html(result);
+    });
+  </script>
+</body>
+
 </html>
